@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алим · Сайты под трафик для локального бизнеса · Запуск за 5-7 дней</title>
+<meta name="description" content="Делаю сайты под трафик для локального бизнеса с чеком от 50 000 ₽: бани, септики, строительство, ремонт, сервис. Запуск за 5-7 дней. Сам, без субподряда. Связь в Telegram.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Алим · Сайты под трафик для локального бизнеса">
+<meta property="og:description" content="От первого звонка до готового сайта на домене за 5-7 дней. Сам, без субподряда и без воды.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-soft:#0e0e11;
+    --surface:#121216;
+    --surface-2:#16161b;
+    --text:#f4f2ec;
+    --muted:#9a9aa4;
+    --muted-2:#6f6f78;
+    --accent:#F5A623;
+    --accent-bright:#ffbf52;
+    --accent-deep:#c97f12;
+    --border:rgba(255,255,255,.08);
+    --border-strong:rgba(255,255,255,.14);
+    --glow:rgba(245,166,35,.16);
+    --radius:18px;
+    --radius-lg:24px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --maxw:1120px;
+    --header-h:66px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:calc(var(--header-h) + 18px);
+    -webkit-text-size-adjust:100%;
+  }
+
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    font-size:clamp(1rem,.96rem + .25vw,1.075rem);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* subtle film grain, embedded, no external asset */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:.035;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,h2,h3{
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    letter-spacing:-.01em;
+  }
+
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block}
+  ::selection{background:var(--accent);color:#1a1206}
+
+  :focus-visible{
+    outline:2px solid var(--accent-bright);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  .container{
+    width:100%;
+    max-width:var(--maxw);
+    margin-inline:auto;
+    padding-inline:clamp(1.1rem,5vw,2.5rem);
+  }
+
+  section{position:relative;z-index:1}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    --pad-y:.95rem;--pad-x:1.5rem;
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    line-height:1;
+    padding:var(--pad-y) var(--pad-x);
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .25s var(--ease),box-shadow .3s var(--ease),background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease);
+    white-space:nowrap;
+  }
+  .btn .tg{width:1.15em;height:1.15em;flex:none}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent-bright),var(--accent) 55%,var(--accent-deep));
+    color:#1a1206;
+    box-shadow:0 12px 34px -12px var(--glow),inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 44px -12px rgba(245,166,35,.4),inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .btn-primary:active{transform:translateY(0)}
+  .btn-ghost{
+    background:rgba(255,255,255,.03);
+    border-color:var(--border-strong);
+    color:var(--text);
+  }
+  .btn-ghost:hover{
+    border-color:var(--accent);
+    color:var(--accent-bright);
+    transform:translateY(-2px);
+  }
+  .btn-sm{--pad-y:.7rem;--pad-x:1.1rem;font-size:.92rem}
+  .btn-lg{--pad-y:1.15rem;--pad-x:2.1rem;font-size:1.1rem}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    height:var(--header-h);
+    display:flex;
+    align-items:center;
+    transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s;
+    border-bottom:1px solid transparent;
+  }
+  .site-header.scrolled{
+    background:rgba(10,10,12,.72);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom-color:var(--border);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .logo{
+    font-family:'Unbounded',sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    letter-spacing:.02em;
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+  }
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+
+  .nav{
+    position:fixed;
+    top:var(--header-h);
+    left:0;right:0;
+    display:flex;
+    flex-direction:column;
+    gap:.2rem;
+    padding:1rem clamp(1.1rem,5vw,2.5rem) 1.6rem;
+    background:rgba(14,14,17,.98);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+    transform:translateY(-14px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;
+  }
+  .nav.open{opacity:1;visibility:visible;transform:none}
+  .nav a:not(.btn){
+    padding:.7rem .25rem;
+    color:var(--muted);
+    font-weight:600;
+    transition:color .2s;
+    border-bottom:1px solid var(--border);
+  }
+  .nav a:not(.btn):hover{color:var(--text)}
+  .nav .btn{margin-top:.8rem;justify-content:center}
+
+  .burger{
+    width:44px;height:44px;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border-strong);
+    border-radius:12px;
+    cursor:pointer;
+  }
+  .burger span{
+    display:block;width:20px;height:2px;border-radius:2px;background:var(--text);
+    transition:transform .3s var(--ease),opacity .2s var(--ease);
+  }
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  @media(min-width:900px){
+    .burger{display:none}
+    .nav{
+      position:static;flex-direction:row;align-items:center;
+      gap:clamp(1.1rem,2.4vw,2.3rem);
+      padding:0;background:none;border:none;
+      transform:none;opacity:1;visibility:visible;backdrop-filter:none;
+    }
+    .nav a:not(.btn){padding:0;border:none;font-size:.96rem}
+    .nav .btn{margin-top:0}
+  }
+
+  /* ---------- generic section heads ---------- */
+  .section{padding-block:clamp(4.5rem,9vw,7.5rem)}
+  .section-head{max-width:760px;margin-bottom:clamp(2.2rem,4vw,3.4rem)}
+  .kicker{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:1.1rem;
+  }
+  .kicker::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.7}
+  h2.section-title{font-size:clamp(1.85rem,1.2rem + 2.6vw,3.1rem)}
+  .section-sub{color:var(--muted);margin-top:1.05rem;font-size:1.08rem;max-width:62ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding-top:calc(var(--header-h) + clamp(3.5rem,9vw,6.5rem));
+    padding-bottom:clamp(3rem,7vw,5rem);
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+  }
+  .hero-glow::before{
+    content:"";position:absolute;
+    top:-22%;left:50%;transform:translateX(-50%);
+    width:min(1100px,120vw);height:760px;
+    background:radial-gradient(closest-side,rgba(245,166,35,.22),rgba(245,166,35,.07) 45%,transparent 72%);
+    filter:blur(8px);
+  }
+  .hero-glow::after{
+    content:"";position:absolute;
+    bottom:-30%;right:-10%;
+    width:620px;height:620px;
+    background:radial-gradient(closest-side,rgba(86,120,255,.10),transparent 70%);
+  }
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 75% at 50% 0%,#000 35%,transparent 78%);
+    mask-image:radial-gradient(120% 75% at 50% 0%,#000 35%,transparent 78%);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:880px}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:.65rem;
+    font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--border-strong);
+    background:rgba(255,255,255,.02);
+    padding:.5rem .95rem;border-radius:999px;
+    margin-bottom:1.8rem;
+  }
+  .hero-eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,166,35,.5)}70%{box-shadow:0 0 0 12px rgba(245,166,35,0)}100%{box-shadow:0 0 0 0 rgba(245,166,35,0)}}
+  .hero h1{
+    font-size:clamp(2.2rem,1.2rem + 5.2vw,4.4rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin-bottom:1.5rem;
+  }
+  .hero h1 .hl{color:var(--accent-bright)}
+  .hero-sub{
+    font-size:clamp(1.05rem,1rem + .5vw,1.3rem);
+    color:var(--muted);
+    max-width:60ch;
+    margin-bottom:2.3rem;
+  }
+  .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem}
+  .cta-note{font-size:.92rem;color:var(--muted-2);display:flex;align-items:center;gap:.5rem}
+  .cta-note svg{width:1em;height:1em;color:var(--accent)}
+
+  /* trust markers */
+  .trust{
+    margin-top:clamp(3rem,6vw,4.5rem);
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+    position:relative;z-index:1;
+  }
+  .trust-item{
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+    border-radius:var(--radius);
+    padding:1.4rem 1.5rem;
+  }
+  .trust-num{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.9rem;color:var(--accent);line-height:1;margin-bottom:.6rem}
+  .trust-label{color:var(--muted);font-size:.98rem}
+  @media(min-width:720px){.trust{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---------- "для кого" ---------- */
+  .audience-grid{display:grid;gap:2rem;align-items:start}
+  @media(min-width:880px){.audience-grid{grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem)}}
+  .audience-lead{font-size:1.15rem;color:var(--text);font-weight:500}
+  .audience-card{
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));
+    border-radius:var(--radius-lg);
+    padding:clamp(1.6rem,3vw,2.2rem);
+  }
+  .audience-card .lead{font-weight:700;font-size:1.1rem;margin-bottom:1.3rem;font-family:'Unbounded',sans-serif;letter-spacing:-.01em}
+  .check-list{list-style:none;display:flex;flex-direction:column;gap:1.05rem}
+  .check-list li{display:flex;gap:.85rem;color:var(--muted);line-height:1.5}
+  .check-list .ic{
+    flex:none;width:26px;height:26px;border-radius:8px;
+    display:grid;place-items:center;
+    background:rgba(245,166,35,.12);color:var(--accent);
+    margin-top:.1rem;
+  }
+  .check-list .ic svg{width:15px;height:15px}
+
+  /* ---------- generic card grid ---------- */
+  .card-grid{display:grid;grid-template-columns:1fr;gap:1.1rem}
+  @media(min-width:640px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:980px){.card-grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+
+  .card{
+    position:relative;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+    border-radius:var(--radius);
+    padding:1.6rem;
+    transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+
+  /* pains */
+  .pain-card{padding-left:1.6rem;border-left:2px solid rgba(245,166,35,.35)}
+  .pain-card .ic{width:30px;height:30px;color:var(--accent);margin-bottom:1rem}
+  .pain-card .ic svg{width:100%;height:100%}
+  .pain-card p{font-weight:500;color:var(--text)}
+
+  /* steps */
+  .steps{display:flex;flex-direction:column;gap:1rem}
+  .step{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:1.3rem;
+    align-items:start;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008));
+    border-radius:var(--radius);
+    padding:1.5rem clamp(1.3rem,3vw,2rem);
+    transition:transform .3s var(--ease),border-color .3s var(--ease);
+  }
+  .step:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .step-num{
+    font-family:'Unbounded',sans-serif;font-weight:700;
+    font-size:1.5rem;line-height:1;
+    width:52px;height:52px;border-radius:14px;flex:none;
+    display:grid;place-items:center;
+    color:var(--accent);
+    background:rgba(245,166,35,.1);
+    border:1px solid rgba(245,166,35,.22);
+  }
+  .step p{color:var(--muted);padding-top:.45rem}
+  .step p b{color:var(--text);font-weight:700}
+
+  /* work / examples */
+  .work-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+  @media(min-width:760px){.work-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}}
+  .work-card{
+    display:flex;flex-direction:column;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+  }
+  .work-card:hover{transform:translateY(-6px);border-color:rgba(245,166,35,.4);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+  .work-screen{
+    position:relative;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .work-bar{
+    position:relative;z-index:2;
+    display:flex;align-items:center;gap:.45rem;
+    padding:.7rem .9rem;
+    background:rgba(10,10,12,.7);
+    border-bottom:1px solid var(--border);
+  }
+  .work-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);flex:none}
+  .work-url{
+    margin-left:.5rem;font-size:.78rem;color:var(--muted);
+    background:rgba(255,255,255,.04);border:1px solid var(--border);
+    padding:.25rem .7rem;border-radius:999px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .work-canvas{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+  .work-canvas.a{background:radial-gradient(120% 120% at 20% 0%,rgba(245,166,35,.22),transparent 55%),linear-gradient(160deg,#16130d,#0c0c0e)}
+  .work-canvas.b{background:radial-gradient(120% 120% at 80% 10%,rgba(86,170,255,.18),transparent 55%),linear-gradient(160deg,#0c1116,#0b0b0e)}
+  .work-canvas .wm{
+    font-family:'Unbounded',sans-serif;font-weight:800;
+    font-size:clamp(2.6rem,9vw,4.2rem);letter-spacing:.04em;
+    color:rgba(255,255,255,.9);
+    text-shadow:0 8px 30px rgba(0,0,0,.4);
+  }
+  .work-canvas .ring{position:absolute;width:150%;height:150%;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
+  .work-canvas .ring.r2{width:110%;height:110%;border-color:rgba(255,255,255,.05)}
+  .work-body{padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+  .badge{
+    align-self:flex-start;
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(245,166,35,.1);
+    border:1px solid rgba(245,166,35,.3);
+    padding:.35rem .75rem;border-radius:999px;
+  }
+  .badge .live{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2.4s infinite}
+  .work-niche{color:var(--muted);font-size:.95rem;line-height:1.45}
+  .work-name{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:.01em}
+  .work-open{
+    margin-top:auto;padding-top:.4rem;
+    display:inline-flex;align-items:center;gap:.5rem;
+    color:var(--accent-bright);font-weight:700;
+    transition:gap .25s var(--ease);
+  }
+  .work-card:hover .work-open{gap:.85rem}
+  .work-open svg{width:1.05em;height:1.05em}
+
+  /* why */
+  .why-card .ic{
+    width:46px;height:46px;border-radius:13px;margin-bottom:1.2rem;
+    display:grid;place-items:center;
+    background:rgba(245,166,35,.1);color:var(--accent);
+    border:1px solid rgba(245,166,35,.2);
+  }
+  .why-card .ic svg{width:23px;height:23px}
+  .why-card h3{font-size:1.12rem;font-weight:700;margin-bottom:.55rem;letter-spacing:-.005em}
+  .why-card p{color:var(--muted);font-size:.98rem}
+
+  /* faq */
+  .faq{display:flex;flex-direction:column;gap:.85rem;max-width:840px}
+  .faq-item{
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008));
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:border-color .3s var(--ease),background .3s var(--ease);
+  }
+  .faq-item.open{border-color:rgba(245,166,35,.35)}
+  .faq-q{
+    width:100%;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:1.25rem clamp(1.2rem,3vw,1.7rem);
+    background:none;border:none;cursor:pointer;
+    font-family:'Unbounded',sans-serif;font-weight:600;font-size:1.08rem;
+    color:var(--text);text-align:left;letter-spacing:-.005em;
+  }
+  .faq-q .chev{
+    flex:none;width:34px;height:34px;border-radius:50%;
+    display:grid;place-items:center;
+    border:1px solid var(--border-strong);color:var(--accent);
+    transition:transform .35s var(--ease),background .3s,border-color .3s;
+  }
+  .faq-item.open .faq-q .chev{transform:rotate(45deg);background:rgba(245,166,35,.12);border-color:rgba(245,166,35,.4)}
+  .faq-q .chev svg{width:16px;height:16px}
+  .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--ease)}
+  .faq-item.open .faq-a{grid-template-rows:1fr}
+  .faq-a-inner{overflow:hidden}
+  .faq-a p{
+    color:var(--muted);
+    padding:0 clamp(1.2rem,3vw,1.7rem) 1.4rem;
+    max-width:68ch;
+  }
+
+  /* final cta */
+  .final{position:relative;overflow:hidden}
+  .final-card{
+    position:relative;
+    border:1px solid var(--border-strong);
+    border-radius:var(--radius-lg);
+    padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+    text-align:center;
+    background:linear-gradient(180deg,rgba(245,166,35,.07),rgba(255,255,255,.012));
+    overflow:hidden;
+  }
+  .final-card::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(80% 120% at 50% 0%,rgba(245,166,35,.18),transparent 60%);
+  }
+  .final-card > *{position:relative;z-index:1}
+  .final-card h2{font-size:clamp(1.9rem,1.2rem + 3vw,3.2rem);margin-bottom:1.2rem}
+  .final-card p{color:var(--muted);max-width:58ch;margin:0 auto 2.2rem;font-size:1.1rem}
+
+  /* footer */
+  footer{border-top:1px solid var(--border);padding-block:clamp(2.5rem,5vw,3.5rem);position:relative;z-index:1}
+  .footer-inner{display:flex;flex-direction:column;gap:1.2rem;justify-content:space-between;align-items:flex-start}
+  .footer-brand{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.3rem;display:flex;align-items:center;gap:.5rem}
+  .footer-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .footer-tag{color:var(--muted-2);font-size:.95rem}
+  .footer-tg{display:inline-flex;align-items:center;gap:.5rem;color:var(--text);font-weight:600;transition:color .2s}
+  .footer-tg:hover{color:var(--accent-bright)}
+  .footer-tg svg{width:1.1em;height:1.1em;color:var(--accent)}
+  @media(min-width:680px){.footer-inner{flex-direction:row;align-items:center}}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.is-visible{opacity:1;transform:none}
+  .stagger > *:nth-child(2){transition-delay:.07s}
+  .stagger > *:nth-child(3){transition-delay:.14s}
+  .stagger > *:nth-child(4){transition-delay:.21s}
+  .stagger > *:nth-child(5){transition-delay:.28s}
+  .stagger > *:nth-child(6){transition-delay:.35s}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .hero-eyebrow .pulse,.badge .live{animation:none}
+    *{transition-duration:.001ms !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="Алим — на главную"><span class="dot" aria-hidden="true"></span>Алим</a>
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a href="#service">Услуга</a>
+      <a href="#how">Как работаю</a>
+      <a href="#work">Примеры</a>
+      <a href="#faq">Вопросы</a>
+      <a class="btn btn-primary btn-sm" href="https://t.me/alimlon" target="_blank" rel="noopener">
+        <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        Написать в Telegram
+      </a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="hero-eyebrow reveal"><span class="pulse" aria-hidden="true"></span>Делаю сам. Без субподряда.</span>
+      <h1 id="hero-title" class="reveal">Сайты под трафик для локального бизнеса. <span class="hl">Запуск за 5-7 дней.</span></h1>
+      <p class="hero-sub reveal">От первого звонка до готового сайта на домене. Вы отвечаете на 10-20 вопросов, остальное беру на себя. Без субподряда и без воды.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
+          <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Написать в Telegram
+        </a>
+        <span class="cta-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Отвечаю лично. Не менеджер, не бот.
+        </span>
+      </div>
+
+      <div class="trust stagger" role="list">
+        <div class="trust-item reveal" role="listitem">
+          <div class="trust-num">5-7 дней</div>
+          <div class="trust-label">до запуска на домене</div>
+        </div>
+        <div class="trust-item reveal" role="listitem">
+          <div class="trust-num">Сам</div>
+          <div class="trust-label">без субподряда и посредников</div>
+        </div>
+        <div class="trust-item reveal" role="listitem">
+          <div class="trust-num">60+</div>
+          <div class="trust-label">решений в базе под разные ниши</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ДЛЯ КОГО ============ -->
+  <section class="section" id="service" aria-labelledby="service-title">
+    <div class="container">
+      <div class="audience-grid">
+        <div class="reveal">
+          <span class="kicker">Услуга</span>
+          <h2 class="section-title" id="service-title">Для кого я делаю сайты</h2>
+          <p class="audience-lead section-sub">Я работаю с локальным бизнесом, где услуга стоит от 50 000 ₽: бани под ключ, септики, строительство, ремонт квартир, сервисные компании и похожие ниши.</p>
+        </div>
+        <div class="audience-card reveal">
+          <p class="lead">Это для вас, если:</p>
+          <ul class="check-list">
+            <li>
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>сайта нет, и вы теряете клиентов, которые гуглят перед заказом</span>
+            </li>
+            <li>
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>есть старый сайт, который не приносит заявок</span>
+            </li>
+            <li>
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>собираетесь запускать рекламу, но лить трафик некуда</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ БОЛИ ============ -->
+  <section class="section" aria-labelledby="pain-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Знакомо?</span>
+        <h2 class="section-title" id="pain-title">Узнаёте себя?</h2>
+      </div>
+      <div class="card-grid cols-3 stagger">
+        <div class="card pain-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.3 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+          <p>Платили за сайт, а заявок как не было, так и нет.</p>
+        </div>
+        <div class="card pain-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.5 1.5c0 1.5-2 2-2 3.5"/><path d="M12 17h.01"/></svg></div>
+          <p>Подрядчик обещает результат, но не говорит прямо, что вы получите и когда.</p>
+        </div>
+        <div class="card pain-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <p>Сайт делают месяцами: правки, согласования, переносы сроков.</p>
+        </div>
+        <div class="card pain-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7"/><path d="M18 9h2v2"/></svg></div>
+          <p>Запускаете рекламу, а трафик идёт на страницу, которая не продаёт.</p>
+        </div>
+        <div class="card pain-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M12 19v3"/><circle cx="12" cy="12" r="4"/><path d="M5 12H2"/><path d="M22 12h-3"/><path d="M6 6l-1.5-1.5"/><path d="M19.5 19.5 18 18"/></svg></div>
+          <p>Боитесь снова отдать деньги и остаться ни с чем.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КАК РАБОТАЮ ============ -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Процесс</span>
+        <h2 class="section-title" id="how-title">Как мы работаем</h2>
+        <p class="section-sub">От вас минимум времени. Всё остальное на мне.</p>
+      </div>
+      <div class="steps stagger">
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">1</div>
+          <p><b>Созвон 20-30 минут.</b> Разбираем ваш бизнес, клиентов и задачу. Честно скажу, нужен ли вам сайт и что он реально даст.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">2</div>
+          <p><b>Вы отвечаете на 10-20 вопросов.</b> Это всё, что от вас нужно.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">3</div>
+          <p><b>Собираю структуру и тексты под вашу нишу.</b> Беру за основу проверенные решения и адаптирую, а не изобретаю с нуля. Поэтому быстро.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">4</div>
+          <p><b>Показываю готовый сайт.</b> Вносим правки.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">5</div>
+          <p><b>Запуск на домене.</b> Через 5-7 дней после старта у вас рабочий сайт под трафик.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПРИМЕРЫ ============ -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Примеры</span>
+        <h2 class="section-title" id="work-title">Сайты, которые я делаю</h2>
+        <p class="section-sub">Эти проекты уже работают на домене. Откройте и посмотрите вживую.</p>
+      </div>
+      <div class="work-grid stagger">
+
+        <a class="work-card reveal" href="https://snmodul96.ru" target="_blank" rel="noopener" aria-label="Открыть сайт SNMODUL — модульные и каркасные бани под ключ, Екатеринбург">
+          <div class="work-screen">
+            <div class="work-bar" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span class="work-url">snmodul96.ru</span>
+            </div>
+            <div class="work-canvas a" aria-hidden="true">
+              <span class="ring"></span><span class="ring r2"></span>
+              <span class="wm">SN</span>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="badge"><span class="live" aria-hidden="true"></span>Живой сайт</span>
+            <p class="work-niche">Модульные и каркасные бани под ключ, Екатеринбург</p>
+            <h3 class="work-name">SNMODUL</h3>
+            <span class="work-open">Открыть сайт
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="work-card reveal" href="https://байкал-септики.рф" target="_blank" rel="noopener" aria-label="Открыть сайт Байкал-Септики — септики под ключ">
+          <div class="work-screen">
+            <div class="work-bar" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span class="work-url">байкал-септики.рф</span>
+            </div>
+            <div class="work-canvas b" aria-hidden="true">
+              <span class="ring"></span><span class="ring r2"></span>
+              <span class="wm">БС</span>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="badge"><span class="live" aria-hidden="true"></span>Живой сайт</span>
+            <p class="work-niche">Септики под ключ</p>
+            <h3 class="work-name">Байкал-Септики</h3>
+            <span class="work-open">Открыть сайт
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПОЧЕМУ Я ============ -->
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Почему я</span>
+        <h2 class="section-title" id="why-title">Почему со мной</h2>
+      </div>
+      <div class="card-grid cols-3 stagger">
+        <div class="card why-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+          <h3>Делаю сам</h3>
+          <p>Вы общаетесь со мной, а не с менеджером. Ничего не теряется по дороге.</p>
+        </div>
+        <div class="card why-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>5-7 дней от старта до запуска</h3>
+          <p>Не растягиваю на месяцы.</p>
+        </div>
+        <div class="card why-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></div>
+          <h3>Не продаю лишнее</h3>
+          <p>Только то, что нужно под ваш трафик и нишу.</p>
+        </div>
+        <div class="card why-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></div>
+          <h3>База 60+ решений</h3>
+          <p>Беру рабочую структуру и адаптирую, отсюда скорость.</p>
+        </div>
+        <div class="card why-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+          <h3>Минимум вашего времени</h3>
+          <p>Ответили на вопросы, дальше моя работа.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ВОЗРАЖЕНИЯ ============ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Сомнения</span>
+        <h2 class="section-title" id="faq-title">Частые сомнения</h2>
+      </div>
+      <div class="faq stagger">
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">
+            <span>Дорого</span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Я не продаю кучу ненужных опций. Вы платите за сайт под одну задачу: привести заявки. Точную цену назову на созвоне, когда пойму объём. Дешёвый сайт, который не приносит клиентов, выходит дороже нормального.</p></div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">
+            <span>Долго</span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>5-7 дней от старта. Я не беру десять проектов разом и не передаю вас подрядчикам, поэтому сроки не плывут.</p></div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">
+            <span>Непонятно, что получу</span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Покажу примеры сайтов, которые делаю, ещё до старта. Вы видите формат и структуру заранее, а не гадаете.</p></div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">
+            <span>Боюсь снова слить деньги</span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Понимаю, если уже был плохой опыт. Поэтому на созвоне честно скажу, нужен ли вам сайт и что он даст. Если увижу, что сейчас он вам не поможет, скажу прямо.</p></div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">
+            <span>Нет времени этим заниматься</span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>От вас 10-20 ответов на вопросы и пара правок. Всё остальное на мне.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ФИНАЛЬНЫЙ CTA ============ -->
+  <section class="section final" aria-labelledby="final-title">
+    <div class="container">
+      <div class="final-card reveal">
+        <h2 id="final-title">Напишите, разберёмся</h2>
+        <p>Расскажете про бизнес, я скажу, чем могу помочь и сколько это будет стоить. Без давления и продаж. Если сайт вам сейчас не нужен, я так и скажу.</p>
+        <a class="btn btn-primary btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
+          <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Написать в Telegram
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand"><span class="dot" aria-hidden="true"></span>Алим</div>
+      <div class="footer-tag">Сайты под трафик для локального бизнеса</div>
+    </div>
+    <a class="footer-tg" href="https://t.me/alimlon" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+      @alimlon
+    </a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // failsafe: if anything below throws, content must never stay hidden
+  var revealAll = function(){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  };
+
+  try{
+  // header background on scroll
+  var header = document.querySelector('.site-header');
+  var onScroll = function(){
+    if(window.scrollY > 12){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // burger / mobile menu
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  var closeMenu = function(){
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Открыть меню');
+  };
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('open')){ closeMenu(); burger.focus(); }
+  });
+
+  // FAQ accordion (single-open)
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+  });
+
+  // reveal on scroll
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -7% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealAll();
+  }
+  }catch(err){ revealAll(); }
+})();
+</script>
+</body>
+</html>
