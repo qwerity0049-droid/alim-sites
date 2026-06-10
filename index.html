@@ -60,16 +60,9 @@
   a{color:inherit;text-decoration:none}
   img,svg{display:block}
   ::selection{background:var(--accent);color:#fff}
-
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-  .container{
-    width:100%;
-    max-width:var(--maxw);
-    margin-inline:auto;
-    padding-inline:clamp(1.1rem,5vw,2.5rem);
-  }
-
+  .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.1rem,5vw,2.5rem)}
   section{position:relative}
   .alt{background:var(--bg-soft)}
 
@@ -93,15 +86,16 @@
   .btn-sm{--pad-y:.72rem;--pad-x:1.15rem;font-size:.9rem}
   .btn-lg{--pad-y:1.2rem;--pad-x:2.1rem;font-size:1.05rem}
 
-  /* pill chip */
   .chip{
-    display:inline-flex;align-items:center;
-    padding:.7rem 1.25rem;border-radius:999px;
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.75rem 1.3rem;border-radius:999px;
     border:1px solid var(--line-2);background:#fff;color:var(--ink);
     font-weight:600;font-size:.95rem;
     transition:border-color .25s var(--ease),color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease);
   }
   .chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .chip.static{cursor:default}
+  .chip.static:hover{transform:none;border-color:var(--accent);color:var(--accent)}
 
   /* ---------- header ---------- */
   .site-header{
@@ -117,10 +111,7 @@
     border-bottom-color:var(--line);
   }
   .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
-  .logo{
-    font-family:'Manrope',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.01em;
-    display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);
-  }
+  .logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:.5rem;color:var(--ink)}
   .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
 
   .nav{
@@ -141,198 +132,185 @@
   .nav a:not(.btn):hover{color:var(--accent)}
   .nav .btn{margin-top:.9rem;justify-content:center}
 
-  .burger{
-    width:44px;height:44px;display:inline-flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:5px;
-    background:#fff;border:1px solid var(--line-2);border-radius:10px;cursor:pointer;
-  }
-  .burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--ink);
-    transition:transform .3s var(--ease),opacity .2s var(--ease)}
+  .burger{width:44px;height:44px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:#fff;border:1px solid var(--line-2);border-radius:10px;cursor:pointer}
+  .burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s var(--ease),opacity .2s var(--ease)}
   .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
   .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  @media(min-width:920px){
+  @media(min-width:960px){
     .burger{display:none}
-    .nav{
-      position:static;flex-direction:row;align-items:center;gap:clamp(1.3rem,2.4vw,2.4rem);
-      padding:0;background:none;border:none;box-shadow:none;
-      transform:none;opacity:1;visibility:visible;
-    }
-    .nav a:not(.btn){padding:0;border:none;font-size:.74rem}
+    .nav{position:static;flex-direction:row;align-items:center;gap:clamp(1.2rem,2.2vw,2.2rem);padding:0;background:none;border:none;box-shadow:none;transform:none;opacity:1;visibility:visible}
+    .nav a:not(.btn){padding:0;border:none;font-size:.72rem}
     .nav .btn{margin-top:0}
   }
 
   /* ---------- section heads ---------- */
-  .section{padding-block:clamp(4.5rem,9vw,7.5rem)}
-  .section-head{max-width:840px;margin-bottom:clamp(2.4rem,4.5vw,3.6rem)}
-  .kicker{
-    display:inline-flex;align-items:center;gap:.6rem;
-    font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:1.15rem;
-  }
+  .section{padding-block:clamp(4.2rem,8vw,7rem)}
+  .section-head{max-width:880px;margin-bottom:clamp(2.4rem,4.5vw,3.6rem)}
+  .kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1.15rem}
   .kicker::before{content:"";width:24px;height:1px;background:var(--accent);opacity:.7}
   h2.section-title{font-size:clamp(1.95rem,1.2rem + 2.9vw,3.4rem);color:var(--ink)}
   h2.section-title .g{color:var(--grey)}
-  .section-sub{color:var(--muted);margin-top:1.1rem;font-size:1.1rem;max-width:64ch;line-height:1.6}
+  .section-sub{color:var(--muted);margin-top:1.1rem;font-size:1.1rem;max-width:66ch;line-height:1.6}
 
   /* ---------- hero ---------- */
-  .hero{
-    position:relative;overflow:hidden;
-    padding-top:calc(var(--header-h) + clamp(3.5rem,9vw,6rem));
-    padding-bottom:clamp(3rem,7vw,5rem);
-  }
+  .hero{position:relative;overflow:hidden;padding-top:calc(var(--header-h) + clamp(3rem,7vw,5rem));padding-bottom:clamp(3rem,7vw,5rem)}
   .hero-wash{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .hero-wash::before{
-    content:"";position:absolute;top:-30%;right:-12%;
-    width:min(820px,90vw);height:760px;
-    background:radial-gradient(closest-side,rgba(74,107,138,.16),rgba(74,107,138,.04) 50%,transparent 72%);
-  }
-  .hero-wash::after{
-    content:"";position:absolute;bottom:-40%;left:-10%;
-    width:560px;height:560px;
-    background:radial-gradient(closest-side,rgba(74,107,138,.08),transparent 70%);
-  }
-  .hero-inner{position:relative;z-index:1;max-width:920px}
-  .hero-eyebrow{
-    display:inline-flex;align-items:center;gap:.6rem;
-    font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-    border:1px solid var(--line-2);background:#fff;padding:.5rem 1rem;border-radius:999px;margin-bottom:1.8rem;
-  }
+  .hero-wash::before{content:"";position:absolute;top:-30%;right:-12%;width:min(820px,90vw);height:760px;background:radial-gradient(closest-side,rgba(74,107,138,.16),rgba(74,107,138,.04) 50%,transparent 72%)}
+  .hero-wash::after{content:"";position:absolute;bottom:-40%;left:-10%;width:560px;height:560px;background:radial-gradient(closest-side,rgba(74,107,138,.08),transparent 70%)}
+  .hero-layout{position:relative;z-index:1;display:grid;gap:clamp(2.4rem,5vw,3.5rem);align-items:center}
+  @media(min-width:980px){.hero-layout{grid-template-columns:1.08fr .92fr}}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);background:#fff;padding:.5rem 1rem;border-radius:999px;margin-bottom:1.6rem}
   .hero-eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,107,138,.5)}70%{box-shadow:0 0 0 12px rgba(74,107,138,0)}100%{box-shadow:0 0 0 0 rgba(74,107,138,0)}}
-  .hero h1{
-    font-size:clamp(2.3rem,1.2rem + 5.4vw,4.4rem);font-weight:600;letter-spacing:-.025em;margin-bottom:1.5rem;
-  }
+  .hero h1{font-size:clamp(2.25rem,1.2rem + 4.7vw,4rem);font-weight:600;letter-spacing:-.025em;margin-bottom:1rem}
   .hero h1 .hl{color:var(--accent)}
-  .hero-sub{font-size:clamp(1.08rem,1rem + .55vw,1.3rem);color:var(--muted);max-width:60ch;margin-bottom:2.3rem;line-height:1.6}
-  .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem}
+  .hero-rotor{font-size:clamp(1.05rem,1rem + .5vw,1.35rem);font-weight:600;color:var(--ink-soft);margin-bottom:1.4rem}
+  .hero-rotor .rotator{color:var(--accent);border-bottom:2px solid var(--accent-tint)}
+  .hero-sub{font-size:clamp(1.05rem,1rem + .5vw,1.22rem);color:var(--muted);max-width:54ch;margin-bottom:2rem;line-height:1.6}
+  .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;margin-bottom:1.8rem}
   .cta-note{font-size:.95rem;color:var(--muted-2);display:flex;align-items:center;gap:.5rem}
   .cta-note svg{width:1.05em;height:1.05em;color:var(--accent)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;color:var(--muted);font-size:.92rem;font-weight:600}
+  .hero-meta b{color:var(--accent)}
 
-  /* trust stats */
-  .trust{margin-top:clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:1fr;gap:1rem;position:relative;z-index:1}
-  .trust-item{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:1.5rem 1.6rem}
-  .trust-num{font-weight:700;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.55rem;letter-spacing:-.02em}
-  .trust-label{color:var(--muted);font-size:1rem}
-  @media(min-width:720px){.trust{grid-template-columns:repeat(3,1fr)}}
+  /* hero showcase tiles */
+  .showcase{position:relative;display:grid;gap:1rem}
+  .show-tile{
+    border:1px solid var(--line);background:#fff;border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .show-tile:nth-child(1){transform:rotate(-1.6deg)}
+  .show-tile:nth-child(2){transform:rotate(1.4deg);margin-left:auto;width:92%}
+  .show-tile:nth-child(3){transform:rotate(-.8deg);width:88%}
+  .show-tile:hover{transform:rotate(0) translateY(-4px);box-shadow:0 36px 70px -38px rgba(20,24,38,.4)}
+  .tile-bar{display:flex;align-items:center;gap:.4rem;padding:.55rem .75rem;border-bottom:1px solid var(--line);background:#fff}
+  .tile-bar i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+  .tile-bar span{margin-left:.45rem;font-size:.72rem;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);padding:.15rem .55rem;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62%}
+  .tile-canvas{aspect-ratio:16/8.4;display:grid;place-items:center;position:relative;overflow:hidden}
+  .tile-canvas.a{background:radial-gradient(120% 120% at 20% 0%,rgba(74,107,138,.2),transparent 55%),linear-gradient(160deg,#eef2f6,#f8fafb)}
+  .tile-canvas.b{background:radial-gradient(120% 120% at 80% 10%,rgba(74,107,138,.16),transparent 55%),linear-gradient(160deg,#eaf0f4,#f6f8fb)}
+  .tile-canvas.c{background:radial-gradient(120% 120% at 50% 0%,rgba(74,107,138,.12),transparent 60%),linear-gradient(160deg,#eef1f5,#f7f9fb)}
+  .tile-canvas .wm{font-weight:800;font-size:clamp(1.5rem,5vw,2.3rem);letter-spacing:.04em;color:var(--accent);opacity:.92}
+  .tile-canvas .ring{position:absolute;width:140%;height:140%;border-radius:50%;border:1px solid rgba(74,107,138,.12)}
+  .tile-live{position:absolute;top:.6rem;right:.6rem;display:inline-flex;align-items:center;gap:.35rem;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(255,255,255,.85);border:1px solid rgba(74,107,138,.28);padding:.2rem .5rem;border-radius:999px}
+  .tile-live i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
 
-  /* ---------- "для кого" ---------- */
-  .audience-grid{display:grid;gap:2rem;align-items:start}
-  @media(min-width:900px){.audience-grid{grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem)}}
-  .audience-lead{font-size:1.14rem;color:var(--ink-soft);font-weight:500}
-  .audience-note{margin-top:1.2rem;color:var(--muted);font-size:1rem;line-height:1.6;padding-left:1.1rem;border-left:2px solid var(--accent);max-width:60ch}
-  .niche-chips{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.9rem}
-  .niche-chips .chip{cursor:default}
-  .niche-chips .chip:hover{transform:none}
-  .audience-card{
-    border:1px solid var(--line);background:#fff;border-radius:var(--radius-lg);
-    padding:clamp(1.7rem,3vw,2.3rem);box-shadow:var(--shadow);
-  }
-  .audience-card .lead{font-weight:700;font-size:1.12rem;margin-bottom:1.4rem;letter-spacing:-.01em}
-  .check-list{list-style:none;display:flex;flex-direction:column;gap:1.1rem}
-  .check-list li{display:flex;gap:.85rem;color:var(--muted);line-height:1.5}
-  .check-list .ic{flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent);margin-top:.1rem}
-  .check-list .ic svg{width:15px;height:15px}
+  /* ---------- services (что я делаю) ---------- */
+  .svc-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+  @media(min-width:760px){.svc-grid{grid-template-columns:1fr 1fr}}
+  .svc-card{
+    display:flex;flex-direction:column;gap:.8rem;border:1px solid var(--line);background:#fff;border-radius:var(--radius-lg);
+    padding:clamp(1.7rem,3vw,2.3rem);transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  .svc-card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
+  .svc-ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent);border:1px solid rgba(74,107,138,.2);margin-bottom:.3rem}
+  .svc-ic svg{width:24px;height:24px}
+  .svc-card h3{font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
+  .svc-card p{color:var(--muted);font-size:1rem}
+  .svc-card .more{margin-top:auto;display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:700;transition:gap .25s var(--ease)}
+  .svc-card:hover .more{gap:.8rem}
+  .svc-card .more svg{width:1.05em;height:1.05em}
 
-  /* ---------- card grid ---------- */
+  /* ---------- goals (когда это вам нужно) ---------- */
+  .goals{display:grid;grid-template-columns:1fr;gap:1.1rem}
+  @media(min-width:860px){.goals{grid-template-columns:repeat(3,1fr)}}
+  .goal{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:1.7rem;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  .goal:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
+  .goal .n{font-weight:700;font-size:1.05rem;color:var(--accent);background:var(--accent-tint);border:1px solid rgba(74,107,138,.2);width:42px;height:42px;border-radius:11px;display:grid;place-items:center;margin-bottom:1.1rem}
+  .goal h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em}
+  .goal p{color:var(--muted);font-size:.98rem}
+
+  /* ---------- chip cloud (задачи) ---------- */
+  .chip-cloud{display:flex;flex-wrap:wrap;gap:.8rem}
+
+  /* ---------- card grid (боли / почему) ---------- */
   .card-grid{display:grid;grid-template-columns:1fr;gap:1.1rem}
   @media(min-width:640px){.card-grid{grid-template-columns:repeat(2,1fr)}}
   @media(min-width:980px){.card-grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-  .card{
-    position:relative;border:1px solid var(--line);background:#fff;border-radius:var(--radius);
-    padding:1.7rem;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
-  }
+  .card{position:relative;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:1.7rem;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
   .card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow)}
-
-  /* pains */
   .pain-card{padding-left:1.7rem;border-left:3px solid var(--accent)}
   .pain-card .ic{width:30px;height:30px;color:var(--accent);margin-bottom:1rem}
   .pain-card .ic svg{width:100%;height:100%}
   .pain-card p{font-weight:500;color:var(--ink-soft)}
-
-  /* steps */
-  .steps{display:flex;flex-direction:column;gap:1rem}
-  .step{
-    display:grid;grid-template-columns:auto 1fr;gap:1.3rem;align-items:start;
-    border:1px solid var(--line);background:#fff;border-radius:var(--radius);
-    padding:1.5rem clamp(1.3rem,3vw,2rem);
-    transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
-  }
-  .step:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:var(--shadow)}
-  .step-num{
-    font-weight:700;font-size:1.45rem;line-height:1;width:58px;height:58px;border-radius:50%;flex:none;
-    display:grid;place-items:center;color:var(--accent);background:#fff;border:1px solid var(--accent);
-  }
-  .step p{color:var(--muted);padding-top:.6rem}
-  .step p b{color:var(--ink);font-weight:700}
-
-  /* work / examples */
-  .work-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
-  @media(min-width:760px){.work-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}}
-  .work-card{
-    display:flex;flex-direction:column;border:1px solid var(--line);background:#fff;border-radius:var(--radius-lg);
-    overflow:hidden;transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
-  }
-  .work-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 36px 70px -38px rgba(20,24,38,.4)}
-  .work-screen{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
-  .work-bar{
-    position:relative;z-index:2;display:flex;align-items:center;gap:.45rem;
-    padding:.7rem .9rem;background:#fff;border-bottom:1px solid var(--line);
-  }
-  .work-bar i{width:9px;height:9px;border-radius:50%;background:var(--line-2);flex:none}
-  .work-url{
-    margin-left:.5rem;font-size:.78rem;color:var(--muted);background:var(--bg-soft);
-    border:1px solid var(--line);padding:.25rem .7rem;border-radius:999px;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  }
-  .work-canvas{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
-  .work-canvas.a{background:radial-gradient(120% 120% at 20% 0%,rgba(74,107,138,.18),transparent 55%),linear-gradient(160deg,#eef2f6,#f7f9fb)}
-  .work-canvas.b{background:radial-gradient(120% 120% at 80% 10%,rgba(74,107,138,.14),transparent 55%),linear-gradient(160deg,#eaf0f4,#f6f8fb)}
-  .work-canvas .wm{font-weight:800;font-size:clamp(2.6rem,9vw,4.2rem);letter-spacing:.04em;color:var(--accent);opacity:.92}
-  .work-canvas .ring{position:absolute;width:150%;height:150%;border-radius:50%;border:1px solid rgba(74,107,138,.12)}
-  .work-canvas .ring.r2{width:110%;height:110%;border-color:rgba(74,107,138,.1)}
-  .work-body{padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
-  .badge{
-    align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;
-    font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
-    background:var(--accent-tint);border:1px solid rgba(74,107,138,.28);padding:.35rem .75rem;border-radius:999px;
-  }
-  .badge .live{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
-  .work-niche{color:var(--muted);font-size:.95rem;line-height:1.45}
-  .work-name{font-weight:700;font-size:1.4rem;letter-spacing:-.01em}
-  .work-open{margin-top:auto;padding-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-weight:700;transition:gap .25s var(--ease)}
-  .work-card:hover .work-open{gap:.85rem}
-  .work-open svg{width:1.05em;height:1.05em}
-
-  /* why */
-  .why-card .ic{
-    width:46px;height:46px;border-radius:12px;margin-bottom:1.2rem;display:grid;place-items:center;
-    background:var(--accent-tint);color:var(--accent);border:1px solid rgba(74,107,138,.2);
-  }
+  .why-card .ic{width:46px;height:46px;border-radius:12px;margin-bottom:1.2rem;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent);border:1px solid rgba(74,107,138,.2)}
   .why-card .ic svg{width:23px;height:23px}
   .why-card h3{font-size:1.14rem;font-weight:700;margin-bottom:.55rem;letter-spacing:-.01em}
   .why-card p{color:var(--muted);font-size:.98rem}
 
-  /* faq — opens to a dark panel (kontora signature) */
+  /* ---------- compare (без меня / со мной) ---------- */
+  .compare{display:grid;grid-template-columns:1fr;gap:1.2rem}
+  @media(min-width:820px){.compare{grid-template-columns:1fr 1fr}}
+  .compare-col{border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(1.6rem,3vw,2.3rem);background:#fff}
+  .compare-col.good{border-color:rgba(74,107,138,.4);background:linear-gradient(180deg,var(--accent-soft),#fff)}
+  .compare-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px;margin-bottom:1.3rem}
+  .compare-col.bad .compare-tag{color:var(--muted-2);background:#f0f0f3;border:1px solid var(--line-2)}
+  .compare-col.good .compare-tag{color:#fff;background:var(--accent)}
+  .compare-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+  .compare-list li{display:flex;gap:.8rem;line-height:1.5;color:var(--muted)}
+  .compare-col.good .compare-list li{color:var(--ink-soft)}
+  .compare-list .m{flex:none;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;margin-top:.05rem}
+  .compare-col.bad .m{background:#f0f0f3;color:var(--muted-2)}
+  .compare-col.good .m{background:var(--accent-tint);color:var(--accent)}
+  .compare-list .m svg{width:14px;height:14px}
+
+  /* ---------- cta strip ---------- */
+  .cta-strip{background:var(--accent);color:#fff;position:relative;overflow:hidden}
+  .cta-strip::after{content:"";position:absolute;right:-6%;top:-40%;width:480px;height:480px;background:radial-gradient(closest-side,rgba(255,255,255,.12),transparent 70%);pointer-events:none}
+  .cta-strip-inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:1.6rem;align-items:flex-start;justify-content:space-between;padding-block:clamp(2.6rem,5vw,3.6rem)}
+  @media(min-width:820px){.cta-strip-inner{flex-direction:row;align-items:center}}
+  .cta-strip h2{font-size:clamp(1.6rem,1.2rem + 2vw,2.6rem);color:#fff;max-width:22ch;font-weight:600}
+  .cta-strip h2 .price{color:#fff;border-bottom:3px solid rgba(255,255,255,.45)}
+  .cta-strip p{color:rgba(255,255,255,.85);margin-top:.7rem;font-size:1.02rem}
+
+  /* ---------- method (как я работаю) ---------- */
+  .method{display:flex;flex-direction:column;gap:1.1rem}
+  .m-item{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:start;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:clamp(1.5rem,3vw,2rem);transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  .m-item:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:var(--shadow)}
+  .m-num{font-weight:700;font-size:1.6rem;line-height:1;width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;color:var(--accent);background:#fff;border:1px solid var(--accent)}
+  .m-body h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.4rem}
+  .m-body p{color:var(--muted)}
+
+  /* ---------- two-col (что делаю я / что нужно от вас) ---------- */
+  .twocol{display:grid;grid-template-columns:1fr;gap:1.2rem}
+  @media(min-width:820px){.twocol{grid-template-columns:1fr 1fr}}
+  .twocol-col{border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(1.7rem,3vw,2.3rem);background:#fff}
+  .twocol-col.me{background:linear-gradient(180deg,var(--accent-soft),#fff);border-color:rgba(74,107,138,.35)}
+  .twocol-col h3{font-size:1.3rem;font-weight:700;margin-bottom:1.3rem;letter-spacing:-.01em}
+  .arrow-list{list-style:none;display:flex;flex-direction:column;gap:.95rem}
+  .arrow-list li{display:flex;gap:.8rem;line-height:1.5;color:var(--muted)}
+  .twocol-col.me .arrow-list li{color:var(--ink-soft)}
+  .arrow-list .ar{color:var(--accent);font-weight:800;flex:none;margin-top:.05rem}
+
+  /* ---------- price card ---------- */
+  .price-card{position:relative;border:1px solid var(--line-2);border-radius:var(--radius-lg);background:#fff;padding:clamp(2rem,4vw,3rem);display:grid;gap:1.6rem;align-items:center;box-shadow:var(--shadow)}
+  @media(min-width:820px){.price-card{grid-template-columns:auto 1fr auto}}
+  .price-big{font-weight:700;font-size:clamp(2.2rem,1.2rem + 3vw,3.4rem);color:var(--accent);letter-spacing:-.03em;line-height:1}
+  .price-big small{display:block;font-size:.95rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:.5rem}
+  .price-incl{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+  .price-incl li{display:flex;gap:.6rem;color:var(--muted);line-height:1.45}
+  .price-incl .m{flex:none;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent);margin-top:.05rem}
+  .price-incl .m svg{width:13px;height:13px}
+  .price-note{color:var(--muted-2);font-size:.92rem;margin-top:1.1rem}
+
+  /* ---------- faq dialogue (вы:/мы:) ---------- */
+  .qa-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+  @media(min-width:820px){.qa-grid{grid-template-columns:1fr 1fr}}
+  .qa{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:1.6rem clamp(1.4rem,3vw,1.8rem)}
+  .qa .you,.qa .me{display:flex;gap:.8rem}
+  .qa .you{margin-bottom:1rem}
+  .qa .role{flex:none;font-weight:700;font-size:.84rem;letter-spacing:.04em;width:42px;color:var(--muted-2);padding-top:.1rem}
+  .qa .me .role{color:var(--accent)}
+  .qa .you .t{font-weight:700;color:var(--ink);font-size:1.05rem}
+  .qa .me .t{color:var(--muted);line-height:1.55}
+
+  /* ---------- faq accordion ---------- */
   .faq{display:flex;flex-direction:column;gap:.85rem;max-width:860px}
-  .faq-item{
-    border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);overflow:hidden;
-    transition:background .3s var(--ease),border-color .3s var(--ease);
-  }
+  .faq-item{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);overflow:hidden;transition:background .3s var(--ease),border-color .3s var(--ease)}
   .faq-item.open{background:var(--dark);border-color:var(--dark)}
-  .faq-q{
-    width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
-    padding:1.3rem clamp(1.3rem,3vw,1.8rem);background:none;border:none;cursor:pointer;
-    font-family:'Manrope',sans-serif;font-weight:700;font-size:1.08rem;color:var(--ink);text-align:left;letter-spacing:-.005em;
-    transition:color .3s var(--ease);
-  }
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem clamp(1.3rem,3vw,1.8rem);background:none;border:none;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;font-size:1.08rem;color:var(--ink);text-align:left;letter-spacing:-.005em;transition:color .3s var(--ease)}
   .faq-item.open .faq-q{color:#fff}
-  .faq-q .chev{
-    flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
-    border:1px solid var(--line-2);color:var(--accent);background:#fff;
-    transition:transform .35s var(--ease),background .3s,border-color .3s;
-  }
+  .faq-q .chev{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--accent);background:#fff;transition:transform .35s var(--ease),background .3s,border-color .3s}
   .faq-item.open .faq-q .chev{transform:rotate(45deg);background:var(--accent);color:#fff;border-color:var(--accent)}
   .faq-q .chev svg{width:16px;height:16px}
   .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--ease)}
@@ -341,35 +319,51 @@
   .faq-a p{color:var(--muted);padding:0 clamp(1.3rem,3vw,1.8rem) 1.5rem;max-width:70ch;transition:color .3s var(--ease)}
   .faq-item.open .faq-a p{color:#c9c9d2}
 
-  /* final cta */
-  .final-card{
-    position:relative;border:1px solid var(--line-2);border-radius:var(--radius-lg);
-    padding:clamp(2.6rem,6vw,4.6rem) clamp(1.5rem,5vw,4rem);text-align:center;overflow:hidden;
-    background:linear-gradient(180deg,var(--accent-soft),#fff);
-  }
-  .final-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(80% 130% at 50% 0%,rgba(74,107,138,.16),transparent 60%)}
+  /* ---------- examples / portfolio ---------- */
+  .work-grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
+  @media(min-width:760px){.work-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}}
+  .work-card{display:flex;flex-direction:column;border:1px solid var(--line);background:#fff;border-radius:var(--radius-lg);overflow:hidden;transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+  .work-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 36px 70px -38px rgba(20,24,38,.4)}
+  .work-screen{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
+  .work-bar{position:relative;z-index:2;display:flex;align-items:center;gap:.45rem;padding:.7rem .9rem;background:#fff;border-bottom:1px solid var(--line)}
+  .work-bar i{width:9px;height:9px;border-radius:50%;background:var(--line-2);flex:none}
+  .work-url{margin-left:.5rem;font-size:.78rem;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);padding:.25rem .7rem;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .work-canvas{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+  .work-canvas.a{background:radial-gradient(120% 120% at 20% 0%,rgba(74,107,138,.18),transparent 55%),linear-gradient(160deg,#eef2f6,#f7f9fb)}
+  .work-canvas.b{background:radial-gradient(120% 120% at 80% 10%,rgba(74,107,138,.14),transparent 55%),linear-gradient(160deg,#eaf0f4,#f6f8fb)}
+  .work-canvas .wm{font-weight:800;font-size:clamp(2.6rem,9vw,4.2rem);letter-spacing:.04em;color:var(--accent);opacity:.92}
+  .work-canvas .ring{position:absolute;width:150%;height:150%;border-radius:50%;border:1px solid rgba(74,107,138,.12)}
+  .work-canvas .ring.r2{width:110%;height:110%;border-color:rgba(74,107,138,.1)}
+  .work-body{padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+  .badge{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-tint);border:1px solid rgba(74,107,138,.28);padding:.35rem .75rem;border-radius:999px}
+  .badge .live{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+  .work-niche{color:var(--muted);font-size:.95rem;line-height:1.45}
+  .work-name{font-weight:700;font-size:1.4rem;letter-spacing:-.01em}
+  .work-open{margin-top:auto;padding-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-weight:700;transition:gap .25s var(--ease)}
+  .work-card:hover .work-open{gap:.85rem}
+  .work-open svg{width:1.05em;height:1.05em}
+
+  /* ---------- final cta ---------- */
+  .final-card{position:relative;border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:clamp(2.6rem,6vw,4.6rem) clamp(1.5rem,5vw,4rem);text-align:center;overflow:hidden;background:linear-gradient(180deg,var(--accent-soft),#fff)}
+  .final-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(80% 130% at 50% 0%,rgba(74,107,138,.16),transparent 60%)}
   .final-card > *{position:relative;z-index:1}
   .final-card h2{font-size:clamp(1.95rem,1.2rem + 3vw,3.2rem);margin-bottom:1.2rem;color:var(--ink)}
   .final-card p{color:var(--muted);max-width:60ch;margin:0 auto 2.2rem;font-size:1.12rem;line-height:1.6}
 
-  /* footer — big accent block */
+  /* ---------- footer ---------- */
   footer{background:var(--accent);color:#fff;padding-block:clamp(3.6rem,8vw,5.6rem);position:relative;overflow:hidden}
-  footer::after{content:"";position:absolute;right:-8%;top:-30%;width:520px;height:520px;
-    background:radial-gradient(closest-side,rgba(255,255,255,.1),transparent 70%);pointer-events:none}
-  .footer-head{position:relative;z-index:1;font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem);font-weight:600;letter-spacing:-.02em;color:#fff;max-width:20ch;margin-bottom:clamp(1.8rem,4vw,2.6rem);line-height:1.12}
+  footer::after{content:"";position:absolute;right:-8%;top:-30%;width:520px;height:520px;background:radial-gradient(closest-side,rgba(255,255,255,.1),transparent 70%);pointer-events:none}
+  .footer-head{position:relative;z-index:1;font-size:clamp(1.9rem,1.2rem + 3.4vw,3.6rem);font-weight:600;letter-spacing:-.02em;color:#fff;max-width:22ch;margin-bottom:clamp(1.8rem,4vw,2.6rem);line-height:1.12}
   .footer-row{position:relative;z-index:1;display:flex;flex-direction:column;gap:1.8rem;align-items:flex-start;justify-content:space-between}
-  .footer-brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.5rem;display:flex;align-items:center;gap:.55rem;color:#fff;margin-bottom:.7rem}
-  .footer-brand .dot{width:9px;height:9px;border-radius:50%;background:#fff}
-  .footer-tag{color:rgba(255,255,255,.82);font-size:1rem;max-width:34ch}
-  .footer-bottom{position:relative;z-index:1;margin-top:clamp(2.4rem,5vw,3.4rem);padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.2);
-    display:flex;flex-direction:column;gap:.6rem;justify-content:space-between;color:rgba(255,255,255,.78);font-size:.9rem}
+  .footer-consult{display:flex;align-items:center;gap:1rem}
+  .footer-av{width:54px;height:54px;border-radius:50%;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);font-weight:800;font-size:1.4rem;color:#fff}
+  .footer-brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.4rem;display:flex;align-items:center;gap:.5rem;color:#fff;line-height:1}
+  .footer-brand .dot{width:8px;height:8px;border-radius:50%;background:#fff}
+  .footer-tag{color:rgba(255,255,255,.82);font-size:.95rem;max-width:36ch;margin-top:.35rem}
+  .footer-bottom{position:relative;z-index:1;margin-top:clamp(2.4rem,5vw,3.4rem);padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.2);display:flex;flex-direction:column;gap:.6rem;justify-content:space-between;color:rgba(255,255,255,.78);font-size:.9rem}
   .footer-handle{display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-weight:700}
   .footer-handle svg{width:1.05em;height:1.05em}
-  @media(min-width:680px){
-    .footer-row{flex-direction:row;align-items:center}
-    .footer-bottom{flex-direction:row;align-items:center}
-  }
+  @media(min-width:700px){.footer-row{flex-direction:row;align-items:center}.footer-bottom{flex-direction:row;align-items:center}}
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -383,7 +377,7 @@
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
-    .hero-eyebrow .pulse,.badge .live{animation:none}
+    .hero-eyebrow .pulse,.badge .live,.tile-live i{animation:none}
     *{transition-duration:.001ms !important}
   }
 </style>
@@ -398,6 +392,7 @@
       <a href="#service">Услуга</a>
       <a href="#how">Как работаю</a>
       <a href="#work">Примеры</a>
+      <a href="#price">Стоимость</a>
       <a href="#faq">Вопросы</a>
       <a class="btn btn-primary btn-sm" href="https://t.me/alimlon" target="_blank" rel="noopener">
         <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
@@ -415,77 +410,128 @@
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-wash" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <span class="hero-eyebrow reveal"><span class="pulse" aria-hidden="true"></span>Делаю сам. Без субподряда.</span>
-      <h1 id="hero-title" class="reveal">Сайты под трафик для локального бизнеса. <span class="hl">Запуск за 5-7 дней.</span></h1>
-      <p class="hero-sub reveal">От первого звонка до готового сайта на домене. Вы отвечаете на 10-20 вопросов, остальное беру на себя. Без субподряда и без воды.</p>
-      <div class="hero-cta reveal">
-        <a class="btn btn-primary btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
-          <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-          Написать в Telegram
-        </a>
-        <span class="cta-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          Отвечаю лично. Не менеджер, не бот.
-        </span>
+    <div class="container hero-layout">
+      <div>
+        <span class="hero-eyebrow reveal"><span class="pulse" aria-hidden="true"></span>Делаю сам. Без субподряда.</span>
+        <h1 id="hero-title" class="reveal">Сайты под трафик для локального бизнеса. <span class="hl">Запуск за 5-7 дней.</span></h1>
+        <p class="hero-rotor reveal">Сайты, которые <span class="rotator" id="rotator">приводят заявки</span></p>
+        <p class="hero-sub reveal">От первого звонка до готового сайта на домене. Вы отвечаете на 10-20 вопросов, остальное беру на себя. Без субподряда и без воды.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
+            <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            Написать в Telegram
+          </a>
+          <span class="cta-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Отвечаю лично. Не менеджер, не бот.
+          </span>
+        </div>
+        <div class="hero-meta reveal">
+          <span><b>5-7 дней</b> до запуска</span>
+          <span><b>Сам</b>, без субподряда</span>
+          <span><b>60+</b> решений в базе</span>
+        </div>
       </div>
 
-      <div class="trust stagger" role="list">
-        <div class="trust-item reveal" role="listitem">
-          <div class="trust-num">5-7 дней</div>
-          <div class="trust-label">до запуска на домене</div>
+      <div class="showcase reveal" aria-hidden="true">
+        <div class="show-tile">
+          <div class="tile-bar"><i></i><i></i><i></i><span>snmodul96.ru</span></div>
+          <div class="tile-canvas a"><span class="ring"></span><span class="wm">SN</span><span class="tile-live"><i></i>Живой</span></div>
         </div>
-        <div class="trust-item reveal" role="listitem">
-          <div class="trust-num">Сам</div>
-          <div class="trust-label">без субподряда и посредников</div>
+        <div class="show-tile">
+          <div class="tile-bar"><i></i><i></i><i></i><span>байкал-септики.рф</span></div>
+          <div class="tile-canvas b"><span class="ring"></span><span class="wm">БС</span><span class="tile-live"><i></i>Живой</span></div>
         </div>
-        <div class="trust-item reveal" role="listitem">
-          <div class="trust-num">60+</div>
-          <div class="trust-label">решений в базе под разные ниши</div>
+        <div class="show-tile">
+          <div class="tile-bar"><i></i><i></i><i></i><span>ваш-сайт.рф</span></div>
+          <div class="tile-canvas c"><span class="ring"></span><span class="wm">+</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ДЛЯ КОГО ============ -->
-  <section class="section alt" id="service" aria-labelledby="service-title">
+  <!-- ============ ЧТО Я ДЕЛАЮ (услуги) ============ -->
+  <section class="section alt" id="service" aria-labelledby="svc-title">
     <div class="container">
-      <div class="audience-grid">
-        <div class="reveal">
-          <span class="kicker">Услуга</span>
-          <h2 class="section-title" id="service-title">Для кого <span class="g">я делаю сайты</span></h2>
-          <p class="audience-lead section-sub">Я работаю с локальным бизнесом, где услуга стоит от 50 000 ₽: бани под ключ, септики, строительство, ремонт квартир, сервисные компании и похожие ниши.</p>
-          <div class="niche-chips">
-            <span class="chip">Бани под ключ</span>
-            <span class="chip">Септики</span>
-            <span class="chip">Строительство</span>
-            <span class="chip">Ремонт квартир</span>
-            <span class="chip">Сервисные компании</span>
-          </div>
-          <p class="audience-note">Список ниш — это примеры, а не ограничение. Если у вас другая ниша, но услуга дорогая и клиент ищет вас в интернете, скорее всего, я тоже смогу помочь. Напишите — разберёмся.</p>
+      <div class="section-head reveal">
+        <span class="kicker">Услуга</span>
+        <h2 class="section-title" id="svc-title">Что я <span class="g">делаю</span></h2>
+        <p class="section-sub">Один формат работы и одна задача — сайт, который приводит заявки под трафик.</p>
+      </div>
+      <div class="svc-grid stagger">
+        <a class="svc-card reveal" href="https://t.me/alimlon" target="_blank" rel="noopener">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 21h8"/><path d="M12 18v3"/></svg></div>
+          <h3>Новый сайт под трафик</h3>
+          <p>Лендинг с нуля под рекламу. Структура и тексты под вашу нишу, чтобы трафик приходил на страницу, которая продаёт.</p>
+          <span class="more">Обсудить в Telegram
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a class="svc-card reveal" href="https://t.me/alimlon" target="_blank" rel="noopener">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div>
+          <h3>Редизайн старого сайта</h3>
+          <p>Есть сайт, но он не приносит заявок — переберу структуру и тексты, чтобы он начал работать под трафик.</p>
+          <span class="more">Обсудить в Telegram
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КОГДА ЭТО ВАМ НУЖНО ============ -->
+  <section class="section" aria-labelledby="goal-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Кому подходит</span>
+        <h2 class="section-title" id="goal-title">Когда это <span class="g">вам нужно</span></h2>
+        <p class="section-sub">Я работаю с локальным бизнесом, где услуга стоит от 50 000 ₽: бани под ключ, септики, строительство, ремонт квартир, сервисные компании и похожие ниши.</p>
+        <div class="chip-cloud" style="margin-top:1.6rem">
+          <span class="chip static">Бани под ключ</span>
+          <span class="chip static">Септики</span>
+          <span class="chip static">Строительство</span>
+          <span class="chip static">Ремонт квартир</span>
+          <span class="chip static">Сервисные компании</span>
         </div>
-        <div class="audience-card reveal">
-          <p class="lead">Это для вас, если:</p>
-          <ul class="check-list">
-            <li>
-              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span>сайта нет, и вы теряете клиентов, которые гуглят перед заказом</span>
-            </li>
-            <li>
-              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span>есть старый сайт, который не приносит заявок</span>
-            </li>
-            <li>
-              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span>собираетесь запускать рекламу, но лить трафик некуда</span>
-            </li>
-          </ul>
+      </div>
+      <div class="goals stagger">
+        <div class="goal reveal">
+          <div class="n">01</div>
+          <h3>Сайта ещё нет</h3>
+          <p>И вы теряете клиентов, которые гуглят перед заказом.</p>
+        </div>
+        <div class="goal reveal">
+          <div class="n">02</div>
+          <h3>Старый сайт молчит</h3>
+          <p>Есть сайт, но он не приносит заявок.</p>
+        </div>
+        <div class="goal reveal">
+          <div class="n">03</div>
+          <h3>Запускаете рекламу</h3>
+          <p>Собираетесь лить трафик, но некуда.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ БОЛИ ============ -->
+  <!-- ============ ОБЛАКО ЗАДАЧ ============ -->
+  <section class="section alt" aria-labelledby="tasks-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">С чем приходят</span>
+        <h2 class="section-title" id="tasks-title">С какой задачей <span class="g">ко мне пишут</span></h2>
+      </div>
+      <div class="chip-cloud stagger reveal">
+        <a class="chip" href="https://t.me/alimlon" target="_blank" rel="noopener">Сделать сайт под трафик</a>
+        <a class="chip" href="https://t.me/alimlon" target="_blank" rel="noopener">Переделать старый сайт</a>
+        <a class="chip" href="https://t.me/alimlon" target="_blank" rel="noopener">Запустить рекламу с нормальной посадочной</a>
+        <a class="chip" href="https://t.me/alimlon" target="_blank" rel="noopener">Получить новый источник заявок</a>
+        <a class="chip" href="https://t.me/alimlon" target="_blank" rel="noopener">Проверить новую нишу</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ УЗНАЁТЕ СЕБЯ (боли) ============ -->
   <section class="section" aria-labelledby="pain-title">
     <div class="container">
       <div class="section-head reveal">
@@ -521,34 +567,108 @@
     </div>
   </section>
 
-  <!-- ============ КАК РАБОТАЮ ============ -->
-  <section class="section alt" id="how" aria-labelledby="how-title">
+  <!-- ============ БЕЗ МЕНЯ / СО МНОЙ ============ -->
+  <section class="section alt" aria-labelledby="cmp-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">В чём разница</span>
+        <h2 class="section-title" id="cmp-title">Вы получаете не просто сайт, <span class="g">а страницу, которая продаёт</span></h2>
+      </div>
+      <div class="compare stagger">
+        <div class="compare-col bad reveal">
+          <span class="compare-tag">Без меня</span>
+          <ul class="compare-list">
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Непонятно, что получишь и когда.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Сайт делают месяцами, сроки плывут.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Трафик идёт на страницу, которая не продаёт.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Платишь, а заявок нет.</span></li>
+          </ul>
+        </div>
+        <div class="compare-col good reveal">
+          <span class="compare-tag">Со мной</span>
+          <ul class="compare-list">
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Показываю примеры и формат заранее.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>5-7 дней от старта до запуска.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Структура и тексты под трафик из проверенной базы.</span></li>
+            <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Отвечаю лично и говорю прямо.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA STRIP (с ценой) ============ -->
+  <section class="cta-strip" aria-label="Заказать сайт">
+    <div class="container cta-strip-inner">
+      <div class="reveal">
+        <h2>Сделаю сайт под трафик — <span class="price">от 25 000 ₽</span></h2>
+        <p>Запуск за 5-7 дней. Точную цену называю на созвоне, когда пойму объём.</p>
+      </div>
+      <a class="btn btn-dark btn-lg reveal" href="https://t.me/alimlon" target="_blank" rel="noopener">
+        <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        Написать в Telegram
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ КАК Я РАБОТАЮ (нумерованный метод) ============ -->
+  <section class="section" id="how" aria-labelledby="how-title">
     <div class="container">
       <div class="section-head reveal">
         <span class="kicker">Процесс</span>
         <h2 class="section-title" id="how-title">Как мы <span class="g">работаем</span></h2>
         <p class="section-sub">От вас минимум времени. Всё остальное на мне.</p>
       </div>
-      <div class="steps stagger">
-        <div class="step reveal">
-          <div class="step-num" aria-hidden="true">1</div>
-          <p><b>Созвон 20-30 минут.</b> Разбираем ваш бизнес, клиентов и задачу. Честно скажу, нужен ли вам сайт и что он реально даст.</p>
+      <div class="method stagger">
+        <div class="m-item reveal">
+          <div class="m-num" aria-hidden="true">1</div>
+          <div class="m-body"><h3>Созвон 20-30 минут</h3><p>Разбираем ваш бизнес, клиентов и задачу. Честно скажу, нужен ли вам сайт и что он реально даст.</p></div>
         </div>
-        <div class="step reveal">
-          <div class="step-num" aria-hidden="true">2</div>
-          <p><b>Вы отвечаете на 10-20 вопросов.</b> Это всё, что от вас нужно.</p>
+        <div class="m-item reveal">
+          <div class="m-num" aria-hidden="true">2</div>
+          <div class="m-body"><h3>Вы отвечаете на 10-20 вопросов</h3><p>Это всё, что от вас нужно.</p></div>
         </div>
-        <div class="step reveal">
-          <div class="step-num" aria-hidden="true">3</div>
-          <p><b>Собираю структуру и тексты под вашу нишу.</b> Беру за основу проверенные решения и адаптирую, а не изобретаю с нуля. Поэтому быстро.</p>
+        <div class="m-item reveal">
+          <div class="m-num" aria-hidden="true">3</div>
+          <div class="m-body"><h3>Собираю структуру и тексты под вашу нишу</h3><p>Беру за основу проверенные решения и адаптирую, а не изобретаю с нуля. Поэтому быстро.</p></div>
         </div>
-        <div class="step reveal">
-          <div class="step-num" aria-hidden="true">4</div>
-          <p><b>Показываю готовый сайт.</b> Вносим правки.</p>
+        <div class="m-item reveal">
+          <div class="m-num" aria-hidden="true">4</div>
+          <div class="m-body"><h3>Показываю готовый сайт</h3><p>Вносим правки.</p></div>
         </div>
-        <div class="step reveal">
-          <div class="step-num" aria-hidden="true">5</div>
-          <p><b>Запуск на домене.</b> Через 5-7 дней после старта у вас рабочий сайт под трафик.</p>
+        <div class="m-item reveal">
+          <div class="m-num" aria-hidden="true">5</div>
+          <div class="m-body"><h3>Запуск на домене</h3><p>Через 5-7 дней после старта у вас рабочий сайт под трафик.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ЧТО ДЕЛАЮ Я / ЧТО НУЖНО ОТ ВАС ============ -->
+  <section class="section alt" aria-labelledby="split-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Зона ответственности</span>
+        <h2 class="section-title" id="split-title">Что делаю я, <span class="g">а что нужно от вас</span></h2>
+      </div>
+      <div class="twocol stagger">
+        <div class="twocol-col me reveal">
+          <h3>Что делаю я</h3>
+          <ul class="arrow-list">
+            <li><span class="ar" aria-hidden="true">→</span><span>Разбираю бизнес, клиентов и задачу на созвоне.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Собираю структуру и тексты под вашу нишу.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Беру за основу проверенные решения и адаптирую.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Показываю готовый сайт, вношу правки.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Запускаю на домене за 5-7 дней.</span></li>
+          </ul>
+        </div>
+        <div class="twocol-col reveal">
+          <h3>Что нужно от вас</h3>
+          <ul class="arrow-list">
+            <li><span class="ar" aria-hidden="true">→</span><span>20-30 минут на созвон в начале.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Ответить на 10-20 вопросов про бизнес.</span></li>
+            <li><span class="ar" aria-hidden="true">→</span><span>Пара правок по готовому макету.</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -610,8 +730,33 @@
     </div>
   </section>
 
-  <!-- ============ ПОЧЕМУ Я ============ -->
-  <section class="section alt" aria-labelledby="why-title">
+  <!-- ============ СТОИМОСТЬ ============ -->
+  <section class="section alt" id="price" aria-labelledby="price-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Стоимость и сроки</span>
+        <h2 class="section-title" id="price-title">Сколько стоит <span class="g">и как быстро</span></h2>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-big">от 25 000 ₽<small>сайт под трафик</small></div>
+        <ul class="price-incl">
+          <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Структура и тексты под вашу нишу</span></li>
+          <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Сборка и запуск на домене</span></li>
+          <li><span class="m" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Запуск за 5-7 дней · правки</span></li>
+        </ul>
+        <div>
+          <a class="btn btn-primary btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
+            <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            Узнать цену
+          </a>
+          <p class="price-note">Точную цену называю на созвоне, когда пойму объём.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПОЧЕМУ СО МНОЙ ============ -->
+  <section class="section" aria-labelledby="why-title">
     <div class="container">
       <div class="section-head reveal">
         <span class="kicker">Почему я</span>
@@ -652,48 +797,80 @@
     </div>
   </section>
 
-  <!-- ============ ВОЗРАЖЕНИЯ ============ -->
-  <section class="section" id="faq" aria-labelledby="faq-title">
+  <!-- ============ FAQ ДИАЛОГ (Вы:/Я:) — сомнения ============ -->
+  <section class="section alt" id="faq" aria-labelledby="faq-title">
     <div class="container">
       <div class="section-head reveal">
         <span class="kicker">Сомнения</span>
         <h2 class="section-title" id="faq-title">Частые <span class="g">сомнения</span></h2>
       </div>
+      <div class="qa-grid stagger">
+        <div class="qa reveal">
+          <div class="you"><span class="role">Вы:</span><span class="t">Дорого</span></div>
+          <div class="me"><span class="role">Я:</span><span class="t">Я не продаю кучу ненужных опций. Вы платите за сайт под одну задачу: привести заявки. Точную цену назову на созвоне, когда пойму объём. Дешёвый сайт, который не приносит клиентов, выходит дороже нормального.</span></div>
+        </div>
+        <div class="qa reveal">
+          <div class="you"><span class="role">Вы:</span><span class="t">Долго</span></div>
+          <div class="me"><span class="role">Я:</span><span class="t">5-7 дней от старта. Я не беру десять проектов разом и не передаю вас подрядчикам, поэтому сроки не плывут.</span></div>
+        </div>
+        <div class="qa reveal">
+          <div class="you"><span class="role">Вы:</span><span class="t">Непонятно, что получу</span></div>
+          <div class="me"><span class="role">Я:</span><span class="t">Покажу примеры сайтов, которые делаю, ещё до старта. Вы видите формат и структуру заранее, а не гадаете.</span></div>
+        </div>
+        <div class="qa reveal">
+          <div class="you"><span class="role">Вы:</span><span class="t">Боюсь снова слить деньги</span></div>
+          <div class="me"><span class="role">Я:</span><span class="t">Понимаю, если уже был плохой опыт. Поэтому на созвоне честно скажу, нужен ли вам сайт и что он даст. Если увижу, что сейчас он вам не поможет, скажу прямо.</span></div>
+        </div>
+        <div class="qa reveal">
+          <div class="you"><span class="role">Вы:</span><span class="t">Нет времени этим заниматься</span></div>
+          <div class="me"><span class="role">Я:</span><span class="t">От вас 10-20 ответов на вопросы и пара правок. Всё остальное на мне.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ АККОРДЕОН — по делу ============ -->
+  <section class="section" aria-labelledby="faq2-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Коротко по делу</span>
+        <h2 class="section-title" id="faq2-title">Частые <span class="g">вопросы</span></h2>
+      </div>
       <div class="faq stagger">
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">
-            <span>Дорого</span>
+            <span>Сколько стоит?</span>
             <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Я не продаю кучу ненужных опций. Вы платите за сайт под одну задачу: привести заявки. Точную цену назову на созвоне, когда пойму объём. Дешёвый сайт, который не приносит клиентов, выходит дороже нормального.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>От 25 000 ₽. Точную цену называю на созвоне, когда пойму объём задачи.</p></div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">
-            <span>Долго</span>
+            <span>Сколько по времени?</span>
             <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>5-7 дней от старта. Я не беру десять проектов разом и не передаю вас подрядчикам, поэтому сроки не плывут.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>5-7 дней от старта до запуска на домене.</p></div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">
-            <span>Непонятно, что получу</span>
+            <span>Что входит в работу?</span>
             <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Покажу примеры сайтов, которые делаю, ещё до старта. Вы видите формат и структуру заранее, а не гадаете.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>Структура и тексты под вашу нишу, сборка сайта и запуск на домене, правки.</p></div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">
-            <span>Боюсь снова слить деньги</span>
+            <span>Кто будет делать?</span>
             <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Понимаю, если уже был плохой опыт. Поэтому на созвоне честно скажу, нужен ли вам сайт и что он даст. Если увижу, что сейчас он вам не поможет, скажу прямо.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>Я сам, без субподряда. Вы общаетесь со мной, а не с менеджером.</p></div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" aria-expanded="false">
-            <span>Нет времени этим заниматься</span>
+            <span>Будут ли правки?</span>
             <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>От вас 10-20 ответов на вопросы и пара правок. Всё остальное на мне.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>Да. Показываю готовый сайт, вносим правки, потом запускаем на домене.</p></div></div>
         </div>
       </div>
     </div>
@@ -718,11 +895,14 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <h2 class="footer-head reveal">Сайты под трафик для локального бизнеса</h2>
+    <h2 class="footer-head reveal">Первый шаг — написать в Telegram</h2>
     <div class="footer-row reveal">
-      <div>
-        <div class="footer-brand"><span class="dot" aria-hidden="true"></span>Алим</div>
-        <div class="footer-tag">Делаю сам. Без субподряда. Связь только в Telegram — не менеджер, не бот.</div>
+      <div class="footer-consult">
+        <div class="footer-av" aria-hidden="true">А</div>
+        <div>
+          <div class="footer-brand"><span class="dot" aria-hidden="true"></span>Алим</div>
+          <div class="footer-tag">Отвечу лично — не менеджер и не бот. Делаю сам, без субподряда.</div>
+        </div>
       </div>
       <a class="btn btn-dark btn-lg" href="https://t.me/alimlon" target="_blank" rel="noopener">
         <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
@@ -730,7 +910,7 @@
       </a>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Алим</span>
+      <span>© 2026 Алим · Сайты под трафик для локального бизнеса</span>
       <a class="footer-handle" href="https://t.me/alimlon" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
         @alimlon
@@ -743,7 +923,6 @@
 (function(){
   "use strict";
 
-  // failsafe: if anything below throws, content must never stay hidden
   var revealAll = function(){
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   };
@@ -771,9 +950,7 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
   });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
-  });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && nav.classList.contains('open')){ closeMenu(); burger.focus(); }
   });
@@ -793,6 +970,19 @@
       btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
     });
   });
+
+  // hero rotating word
+  var rotator = document.getElementById('rotator');
+  if(rotator){
+    var words = ['приводят заявки','работают под трафик','запускаются за 5-7 дней'];
+    var i = 0;
+    setInterval(function(){
+      i = (i + 1) % words.length;
+      rotator.style.opacity = '0';
+      setTimeout(function(){ rotator.textContent = words[i]; rotator.style.opacity = '1'; }, 220);
+    }, 2600);
+    rotator.style.transition = 'opacity .22s ease';
+  }
 
   // reveal on scroll
   var revealEls = document.querySelectorAll('.reveal');
